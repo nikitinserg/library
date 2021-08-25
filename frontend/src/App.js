@@ -14,15 +14,20 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/authors/')
-            .then(response => {...})
+        // this.setState(
+        //     this.state = {
+        //         'authors': authors
+        //     }
+        // )
+
+        axios
+            .get('http://127.0.0.1:8000/api/authors/')
+            .then(response => {
+                const authors = response.data
+                this.setState({'authors': authors})
+            })
             .catch(error => console.log(error))
 
-        this.setState(
-            this.state = {
-                'authors': authors
-            }
-        )
     }
 
     render() {
