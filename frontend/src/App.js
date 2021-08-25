@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import AuthorList from "./components/Authors";
+import axios from "axios";
 
 
 class App extends React.Component {
@@ -13,18 +14,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const authors = [
-            {
-                'first_name': "Ivan",
-                'last_name': "Ivanov",
-                'birthday_year': 1990
-            },
-            {
-                'first_name': "Petr",
-                'last_name': "Petrov",
-                'birthday_year': 1991
-            }
-        ]
+        axios.get('http://127.0.0.1:8000/api/authors/')
+            .then(response => {...})
+            .catch(error => console.log(error))
+
         this.setState(
             this.state = {
                 'authors': authors
